@@ -30,9 +30,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",
+    "@babel/plugin-transform-runtime": "^7.16.10",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
+    "@babel/runtime": "^7.16.7",
     "@emotion/babel-plugin": "^11.7.2",
     "@types/lodash": "^4.14.178",
     "@types/react": "^17.0.38",
@@ -71,5 +73,8 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "files": [
+    "src/styled.d.ts"
+  ]
 }
