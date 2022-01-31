@@ -22,6 +22,7 @@ export const ProductCardWrapper = styled(CardWrapper)`
   justify-content: space-evenly;
   gap: 15px;
   align-items: center;
+  margin: 0 auto;
 `;
 
 export const ProductWrapper = styled('div')`
