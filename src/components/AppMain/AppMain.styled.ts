@@ -1,12 +1,20 @@
 import styled from '@emotion/styled';
 
-export const AppMain = styled('main')`
+export const AppMainWrapper = styled('main')`
   .wrapper {
     margin: 1em 2em;
     display: block;
   }
 
-  @media (min-width: 1100px) {
+  @media (max-width: 1020px) and (min-width: 800px) {
+    .first-column {
+      display: flex;
+      flex-direction: row;
+      gap: 15px;
+    }
+  }
+
+  @media (min-width: 1020px) {
     .wrapper {
       display: flex;
       flex-direction: row;
@@ -20,8 +28,7 @@ export const AppMain = styled('main')`
       min-width: 608px;
     }
     .third-column {
-      flex: auto;
-      max-width: 298px;
+      width: 296px;
     }
 
     main {
