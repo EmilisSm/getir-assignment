@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import ProductItem from '../../api/types/ProductItem';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -16,7 +16,7 @@ import {
 } from './ProductCard.styled';
 
 interface ProductsCardProps {
-  products?: Array<Object>;
+  products?: Array<ProductItem>;
 }
 
 const Product: React.FC<{ product: ProductItem }> = ({ product }) => {
@@ -49,7 +49,7 @@ export const ProductsCard: React.FC<ProductsCardProps> = () => {
     dispatch(
       fetchProducts({ page, withSort: isSortingEnabled, sortValue: sortType })
     );
-  }, [page, sortType]);
+  }, [dispatch, isSortingEnabled, page, sortType]);
 
   return (
     <>

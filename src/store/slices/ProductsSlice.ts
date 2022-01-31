@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import ItemsService from '../../api/itemsService';
 import ProductItem from '../../api/types/ProductItem';
-import type { RootState } from '../store';
 
 interface ProductsState {
   items: Array<ProductItem>;
@@ -56,13 +55,11 @@ const productsSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchProducts.pending, (state, action) => {
+      .addCase(fetchProducts.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        console.log(action.payload);
-        // Add any fetched posts to the array
         state.items = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {

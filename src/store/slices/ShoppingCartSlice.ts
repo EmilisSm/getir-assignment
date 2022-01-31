@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import isEqual from 'lodash/isEqual';
 import ProductItem from '../../api/types/ProductItem';
-import type { RootState } from '../store';
 
 interface ShoppingCartState {
   items: Array<{ product: ProductItem; count: number }>;
@@ -11,7 +10,7 @@ const initialState: ShoppingCartState = {
   items: [],
 };
 
-export const shoppingCartSlice = createSlice({
+const shoppingCartSlice = createSlice({
   name: 'shoppingCart',
   initialState,
   reducers: {

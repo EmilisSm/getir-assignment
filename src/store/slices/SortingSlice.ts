@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../store';
 
 interface SortState {
   withSort: boolean;
@@ -11,7 +10,7 @@ const initialState: SortState = {
   sortType: undefined,
 };
 
-export const sortingSlice = createSlice({
+const sortingSlice = createSlice({
   name: 'sort',
   initialState,
   reducers: {

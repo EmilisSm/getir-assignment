@@ -18,7 +18,7 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:jsx-a11y/recommended',
     'prettier',
-    'prettier/recommended',
+    'plugin:prettier/recommended',
   ],
   rules: {
     'no-unused-vars': 'off',
@@ -28,6 +28,7 @@ module.exports = {
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'linebreak-style': 'unix',
+    'linebreak-style': ['error', 'unix'],
+    'no-console': 2,
   },
 };

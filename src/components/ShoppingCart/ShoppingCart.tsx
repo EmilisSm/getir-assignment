@@ -22,7 +22,7 @@ const countTotal = (
   return allPrices.reduce((a: number, b: number) => a + b).toFixed(2);
 };
 
-export const ShoppingCart: React.FC<{}> = () => {
+export const ShoppingCart: React.FC = () => {
   const shoppingCartItems = useAppSelector((state) => state.shoppingCart.items);
   const dispatch = useAppDispatch();
 

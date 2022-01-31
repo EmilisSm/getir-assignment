@@ -2,14 +2,13 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppDispatch } from '../../store/hooks';
 import { setSorting } from '../../store/slices/SortingSlice';
 import { CardWrapper } from '../common.styled';
 import { FormControlWrapper, CardHeadingSmall } from './SortingCart.styled';
 
 export const SortingCard: React.FC = () => {
   const dispatch = useAppDispatch();
-  const page = useAppSelector((state) => state.products.page);
   return (
     <>
       <CardHeadingSmall>Sorting</CardHeadingSmall>

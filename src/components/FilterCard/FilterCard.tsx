@@ -5,7 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import { CardWrapper } from '../common.styled';
 import { CardTitle, SearchInput } from './FilterCard.styled';
 
-const IndeterminateCheckbox: React.FC<{}> = () => {
+const IndeterminateCheckbox: React.FC = () => {
   const [checked, setChecked] = useState([true, false]);
 
   const handleChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
