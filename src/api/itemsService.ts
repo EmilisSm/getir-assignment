@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/';
+const url = 'https://getir-assignment-server.herokuapp.com/'; // for development set to 'http://localhost:3000/'
 
 const fetchProductItems = async (page: number) => {
   return fetch(`${url}items?_page=${page}&_limit=16`, {
