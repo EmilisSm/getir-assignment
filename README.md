@@ -1,6 +1,9 @@
-# The Project
+# getir-assignment
 
 Application assignment project for Getir
+
+For this application I used React, Redux, Typescript, Webpack, babel, Prettier, eslint, json-server, Emotion (css in js) and for some components I used MUI library.
+
 
 ## Installation
 
@@ -33,4 +36,3 @@ To run tests:
 ```bash
 npm test
 ```
-# getir-assignment
