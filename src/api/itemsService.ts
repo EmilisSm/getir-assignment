@@ -1,7 +1,7 @@
 const url = 'https://getir-assignment-server.herokuapp.com/'; // for development set to 'http://localhost:3000/'
 
 const clientGetRequest = (urlRequest: string, page: number) => {
-  return fetch(`${url}${urlRequest}?_page=${page}&_limit=16`, {
+  return fetch(`${url}${urlRequest}_page=${page}&_limit=16`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -10,7 +10,7 @@ const clientGetRequest = (urlRequest: string, page: number) => {
 };
 
 const fetchProductItems = async (page: number) =>
-  clientGetRequest('items', page);
+  clientGetRequest('items?', page);
 
 const sortProductItemsByPriceAsc = (page: number) =>
   clientGetRequest('items?_sort=price&_order=asc&', page);
