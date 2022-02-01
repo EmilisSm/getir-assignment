@@ -12,7 +12,7 @@ export const ShoppingCartItem = styled('div')`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  border-bottom: 1px solid #f2f0fd;
+  border-bottom: 1px solid ${(props) => props.theme.color.primaryLight};
   padding: 20px 0;
   gap: 15px;
 `;
@@ -32,5 +32,11 @@ export const ItemQuantity = styled('div')`
 
 export const TotalAmount = styled(PriceWrapper)`
   text-align: end;
-  padding: 20px 25px 0 0;
+  padding: 17px 24px;
+  border: 2px solid #1ea4ce;
+  box-sizing: border-box;
+  border-radius: 2px;
+  margin-top: 16px;
+  margin-left: auto;
+  width: fit-content;
 `;

@@ -1,11 +1,15 @@
 import styled from '@emotion/styled';
 import Pagination from '@mui/material/Pagination';
-import { CardWrapper } from '../common.styled';
+import { CardWrapper, ButtonStyled } from '../common.styled';
 
-export const PaginationWrapper = styled(Pagination)`
-  display: flex;
-  justify-content: center;
-  margin: 32px 0;
+export const ProductsHeading = styled('h4')`
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0.25px;
+  margin: 16px 0;
+  color: #6f6f6f;
 `;
 
 export const ProductCardWrapper = styled(CardWrapper)`
@@ -33,26 +37,10 @@ export const ProductWrapper = styled('div')`
   margin: 0 auto;
 `;
 
-export const AddButton = styled('button')`
-  background: #1ea4ce;
-  border: none;
-  border-radius: 3px;
-  width: 100%;
-  color: #ffffff;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:active {
-    opacity: 0.5;
-  }
-`;
-
 export const ImageWrapper = styled('img')`
   border-radius: 12px;
   padding: 16px;
-  border: 1px solid #1ea4ce;
+  border: 1px solid ${(props) => props.theme.color.primary};
   display: inline-block;
   background-color: lightblue;
   margin-bottom: 8px;
@@ -62,4 +50,32 @@ export const ImageWrapper = styled('img')`
 
 export const ProductName = styled('div')`
   font-weight: 600;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0px;
+  text-align: left;
+`;
+
+export const AddButton = styled(ButtonStyled)`
+  width: 100%;
+`;
+
+export const ProductTypeButton = styled(ButtonStyled)`
+  margin-right: 8px;
+  margin-bottom: 16px;
+  padding: 6px 16px;
+  gap: 8px;
+
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: center;
+`;
+
+export const PaginationWrapper = styled(Pagination)`
+  display: flex;
+  justify-content: center;
+  margin: 32px 0;
 `;

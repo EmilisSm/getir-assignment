@@ -28,25 +28,29 @@ export const ShoppingCart: React.FC = () => {
 
   return (
     <ShoppingCartWrapper>
-      {shoppingCartItems.map((item, index) => (
-        <ShoppingCartItem key={index}>
-          <div>
-            <div>{item.product.name}</div>
-            <PriceWrapper>$ {item.product.price}</PriceWrapper>
-          </div>
-          <ItemButton>
-            <RemoveIcon
-              htmlColor="#1ea4ce"
-              onClick={() => dispatch(removeItem(item.product))}
-            />
-            <ItemQuantity>{item.count}</ItemQuantity>
-            <AddIcon
-              htmlColor="#1ea4ce"
-              onClick={() => dispatch(addItem(item.product))}
-            />
-          </ItemButton>
-        </ShoppingCartItem>
-      ))}
+      {shoppingCartItems?.length ? (
+        shoppingCartItems.map((item, index) => (
+          <ShoppingCartItem key={index}>
+            <div>
+              <div>{item.product.name}</div>
+              <PriceWrapper>$ {item.product.price}</PriceWrapper>
+            </div>
+            <ItemButton>
+              <RemoveIcon
+                htmlColor="#1ea4ce"
+                onClick={() => dispatch(removeItem(item.product))}
+              />
+              <ItemQuantity>{item.count}</ItemQuantity>
+              <AddIcon
+                htmlColor="#1ea4ce"
+                onClick={() => dispatch(addItem(item.product))}
+              />
+            </ItemButton>
+          </ShoppingCartItem>
+        ))
+      ) : (
+        <ShoppingCartItem>{'no products selected'}</ShoppingCartItem>
+      )}
       <TotalAmount>
         &#x20BA; {shoppingCartItems?.length && countTotal(shoppingCartItems)}
       </TotalAmount>

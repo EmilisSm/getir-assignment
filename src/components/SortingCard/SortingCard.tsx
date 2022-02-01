@@ -4,8 +4,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 import { useAppDispatch } from '../../store/hooks';
 import { setSorting } from '../../store/slices/SortingSlice';
-import { CardWrapper } from '../common.styled';
-import { FormControlWrapper, CardHeadingSmall } from './SortingCart.styled';
+import { CardWrapper, CardHeadingSmall } from '../common.styled';
+import { FormControlWrapper } from './SortingCart.styled';
 
 export const SortingCard: React.FC = () => {
   const dispatch = useAppDispatch();
