@@ -16,15 +16,20 @@ const initialState: ProductsState = {
   page: 1,
 };
 
-interface fetchArguments {
+interface fetchProductArguments {
   page: number;
   withSort: boolean;
   sortValue?: string;
 }
 
+interface filterByTypeArguments {
+  page: number;
+  filterType: string;
+}
+
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async (data: fetchArguments) => {
+  async (data: fetchProductArguments) => {
     const { page, withSort, sortValue } = data;
     if (withSort) {
       switch (sortValue) {
@@ -42,6 +47,14 @@ export const fetchProducts = createAsyncThunk(
     } else {
       return await ItemsService.fetchProductItems(page);
     }
+  }
+);
+
+export const filterProductsByType = createAsyncThunk(
+  'products/filterProductsByType',
+  async (data: filterByTypeArguments) => {
+    const { page, filterType } = data;
+    return await ItemsService.filterByProductType(page, filterType);
   }
 );
 
@@ -63,6 +76,17 @@ const productsSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(filterProductsByType.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(filterProductsByType.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.items = action.payload;
+      })
+      .addCase(filterProductsByType.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });
