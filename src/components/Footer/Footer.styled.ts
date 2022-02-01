@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
-export const Footer = styled('footer')`
+export const FooterStyled = styled('footer')`
   margin-top: auto;
   background-color: transparent;
-  color: #1ea4ce;
+  color: ${(props) => props.theme.color.primary};
   text-align: center;
 `;

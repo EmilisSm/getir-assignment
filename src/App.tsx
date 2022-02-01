@@ -12,11 +12,9 @@ export const App = () => {
     <MuiThemeProvider theme={muiTheme}>
       <ThemeProvider theme={theme}>
         <Provider store={store}>
-          <Header>
-            <h1>Market</h1>
-          </Header>
+          <Header />
           <AppMain />
-          <Footer>2019 - Privacy Policy</Footer>
+          <Footer />
         </Provider>
       </ThemeProvider>
     </MuiThemeProvider>

@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 
-export const Header = styled('header')`
+export const HeaderStyled = styled('header')`
   text-align: center;
-  background-color: #1ea4ce;
+  background-color: ${(props) => props.theme.color.primary};
+  padding-top: 17px;
+  padding-bottom: 19px;
 
   h1 {
     font-family: 'Pacifico', cursive;
