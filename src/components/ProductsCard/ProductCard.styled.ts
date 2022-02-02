@@ -72,6 +72,11 @@ export const ProductTypeButton = styled(ButtonStyled)`
   font-weight: 400;
   line-height: 18px;
   text-align: center;
+
+  &.focused {
+    color: ${(props) => props.theme.color.primary};
+    background-color: ${(props) => props.theme.color.primaryLight};
+  }
 `;
 
 export const PaginationWrapper = styled(Pagination)`
