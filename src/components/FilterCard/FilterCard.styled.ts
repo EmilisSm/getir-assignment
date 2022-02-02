@@ -1,27 +1,6 @@
 import styled from '@emotion/styled';
 import { CardStyled } from '../common.styled';
 
-export const CheckboxWrapperStyled = styled('div')`
-  max-height: 176px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-`;
-
 export const FilterCardStyled = styled(CardStyled)`
   height: 244px;
 `;

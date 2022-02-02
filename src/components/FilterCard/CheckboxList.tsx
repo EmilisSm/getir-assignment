@@ -1,33 +1,57 @@
 import { useState } from 'react';
-import Box from '@mui/material/Box';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import { CheckboxWrapperStyled } from './FilterCard.styled';
+import _ from 'lodash';
+
+import { CheckboxWrapperStyled, CheckboxStyled } from './CheckboxList.styled';
+
+const Checkbox: React.FC<{
+  name: string;
+  checked: boolean;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+}> = ({ name, checked, onChange }) => (
+  <CheckboxStyled>
+    <input
+      type="checkbox"
+      id={_.camelCase(name)}
+      name={_.camelCase(name)}
+      checked={checked}
+      onChange={onChange}
+    />
+    <label htmlFor={_.camelCase(name)}>{name}</label>
+  </CheckboxStyled>
+);
 
 export const CheckboxList: React.FC<{ options: Array<string> }> = ({
   options,
 }) => {
   const [allChecked, setAllChecked] = useState(true);
+  const [selected, setSelected] = useState<Array<string>>([]);
 
-  const handleAllCheck = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAllChecked(event.target.checked);
+  const handleAllCheck = () => {
+    setAllChecked(!allChecked);
   };
 
-  const children = (
-    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-      {options.map((option, index) => (
-        <FormControlLabel key={index} label={option} control={<Checkbox />} />
-      ))}
-    </Box>
-  );
+  const handleCheckboxCheck = (option: string) => {
+    const tempArray: Array<string> = [...selected];
+    const isSelected = selected.includes(option);
+    if (isSelected) {
+      setSelected(tempArray.filter((i) => i !== option));
+    } else {
+      tempArray.push(option);
+      setSelected(tempArray);
+    }
+  };
 
   return (
     <CheckboxWrapperStyled>
-      <FormControlLabel
-        label="All"
-        control={<Checkbox checked={allChecked} onChange={handleAllCheck} />}
-      />
-      {children}
+      <Checkbox name="All" checked={allChecked} onChange={handleAllCheck} />
+      {options.map((option) => (
+        <Checkbox
+          key={_.camelCase(option)}
+          name={option}
+          checked={selected.includes(option)}
+          onChange={() => handleCheckboxCheck(option)}
+        />
+      ))}
     </CheckboxWrapperStyled>
   );
 };
