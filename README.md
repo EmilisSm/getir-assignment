@@ -57,11 +57,12 @@ Work in progress...
 
 - make another request to get all products (without pagination) to get Brands and Tags.
 - filter by selected tags and brands with pagination, sorting and iteType filter.
-- add total shopping cart amount to redux state and display it in header
-- filtering by item Tags & Brands
-- add tests
-- refactor to use ReduxSaga instead of redux thunk
-- refactor MUI components to custom ones to get rid of MUI dependency and reduce bundle size
+- add total shopping cart amount to redux state and display it in header.
+- filtering by item Tags & Brands.
+- add webpack alias to clean up imports.
+- add tests.
+- refactor to use ReduxSaga instead of redux thunk.
+- refactor MUI components to custom ones to get rid of MUI dependency and reduce bundle size.
 
 ## Installation
 
