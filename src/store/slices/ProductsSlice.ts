@@ -7,6 +7,7 @@ interface ProductsState {
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error?: string | null;
   page: number;
+  pageCount: number;
 }
 
 const initialState: ProductsState = {
@@ -14,47 +15,46 @@ const initialState: ProductsState = {
   status: 'idle',
   error: null,
   page: 1,
+  pageCount: 0,
 };
 
 interface fetchProductArguments {
   page: number;
-  withSort: boolean;
   sortValue?: string;
-}
-
-interface filterByTypeArguments {
-  page: number;
-  filterType: string;
+  filterType?: string;
 }
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async (data: fetchProductArguments) => {
-    const { page, withSort, sortValue } = data;
-    if (withSort) {
+  async (args: fetchProductArguments) => {
+    let url = 'items?';
+    const { page, sortValue, filterType } = args;
+    if (sortValue) {
       switch (sortValue) {
-        case 'lowToHigh':
-          return await ItemsService.sortProductItemsByPriceAsc(page);
-        case 'highToLow':
-          return await ItemsService.sortProductItemsByPriceDesc(page);
-        case 'newToOld':
-          return ItemsService.sortProductItemsByDateAsc(page);
-        case 'oldToNew':
-          return ItemsService.sortProductItemsByDateDesc(page);
+        case 'PriceAsc':
+          url = url + '_sort=price&_order=asc&';
+          break;
+        case 'PriceDesc':
+          url = url + '_sort=price&_order=desc&';
+          break;
+        case 'DateAsc':
+          url = url = '_sort=added&_order=asc&';
+          break;
+        case 'DateDesc':
+          url = url + '_sort=added&_order=desc&';
+          break;
         default:
-          return await ItemsService.fetchProductItems(page);
+          break;
       }
-    } else {
-      return await ItemsService.fetchProductItems(page);
     }
-  }
-);
-
-export const filterProductsByType = createAsyncThunk(
-  'products/filterProductsByType',
-  async (data: filterByTypeArguments) => {
-    const { page, filterType } = data;
-    return await ItemsService.filterByProductType(page, filterType);
+    if (filterType) {
+      url = url + `itemType=${filterType}&`;
+    }
+    // we need to resolve response promise before returing the action payload
+    const response = await ItemsService.fetchProductItems(url, page);
+    const data = await response.response;
+    const total = response.total;
+    return { data, total };
   }
 );
 
@@ -73,20 +73,10 @@ const productsSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.items = action.payload;
+        state.items = action.payload.data;
+        state.pageCount = Math.ceil(Number(action.payload.total) / 16);
       })
       .addCase(fetchProducts.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      })
-      .addCase(filterProductsByType.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(filterProductsByType.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.items = action.payload;
-      })
-      .addCase(filterProductsByType.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });

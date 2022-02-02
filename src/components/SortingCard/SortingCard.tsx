@@ -20,22 +20,22 @@ export const SortingCard: React.FC = () => {
             onChange={(e) => dispatch(setSorting(e.target.value))}
           >
             <FormControlLabel
-              value="lowToHigh"
+              value="PriceAsc"
               control={<Radio />}
               label="Price low to high"
             />
             <FormControlLabel
-              value="highToLow"
+              value="PriceDesc"
               control={<Radio />}
               label="Price high to low"
             />
             <FormControlLabel
-              value="newToOld"
+              value="DateAsc"
               control={<Radio />}
               label="New to old"
             />
             <FormControlLabel
-              value="oldToNew"
+              value="DateDesc"
               control={<Radio />}
               label="Old to new"
             />

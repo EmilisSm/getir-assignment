@@ -1,12 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import ProductItem from '../../api/types/ProductItem';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import {
-  fetchProducts,
-  setPage,
-  filterProductsByType,
-} from '../../store/slices/ProductsSlice';
+import { fetchProducts, setPage } from '../../store/slices/ProductsSlice';
 import {
   ProductCardWrapper,
   PaginationWrapper,
@@ -20,33 +16,28 @@ interface ProductsCardProps {
 }
 
 export const ProductsCard: React.FC<ProductsCardProps> = () => {
+  const [filterType, setFilterType] = useState('');
   const dispatch = useAppDispatch();
-  const page = useAppSelector((state) => state.products.page);
-  const items = useAppSelector((state) => state.products.items);
-  const isSortingEnabled = useAppSelector((state) => state.sort.withSort);
+  const { items, page, pageCount } = useAppSelector((state) => state.products);
   const sortType = useAppSelector((state) => state.sort.sortType);
 
   useEffect(() => {
-    dispatch(
-      fetchProducts({ page, withSort: isSortingEnabled, sortValue: sortType })
-    );
-  }, [dispatch, isSortingEnabled, page, sortType]);
+    dispatch(fetchProducts({ page, sortValue: sortType, filterType }));
+  }, [dispatch, page, sortType, filterType]);
 
   return (
     <>
       <ProductsHeading>{'Product'}</ProductsHeading>
       <div>
         <ProductTypeButton
-          onClick={() =>
-            dispatch(filterProductsByType({ page, filterType: 'mug' }))
-          }
+          className={filterType === 'mug' ? 'focused' : ''}
+          onClick={() => setFilterType('mug')}
         >
           {'mug'}
         </ProductTypeButton>
         <ProductTypeButton
-          onClick={() =>
-            dispatch(filterProductsByType({ page, filterType: 'shirt' }))
-          }
+          className={filterType === 'shirt' ? 'focused' : ''}
+          onClick={() => setFilterType('shirt')}
         >
           {'shirt'}
         </ProductTypeButton>
@@ -61,7 +52,7 @@ export const ProductsCard: React.FC<ProductsCardProps> = () => {
         )}
       </ProductCardWrapper>
       <PaginationWrapper
-        count={109}
+        count={pageCount}
         color="primary"
         shape="rounded"
         onChange={(e, page) => dispatch(setPage(page))}
