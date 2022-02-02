@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import CircularProgress from '@mui/material/CircularProgress';
-import ProductItem from '../../api/types/ProductItem';
+import ProductItem from '../../api/types/Product';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchProducts, setPage } from '../../store/slices/ProductsSlice';
+import { fetchProducts, setPage } from '../../store/slices/productsSlice';
 import {
   ProductCardStyled,
   PaginationStyled,

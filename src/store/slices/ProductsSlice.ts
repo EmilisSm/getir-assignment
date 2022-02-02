@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import ItemsService from '../../api/itemsService';
-import ProductItem from '../../api/types/ProductItem';
+import ItemsService from '../../api/service';
+import ProductItem from '../../api/types/Product';
 
 interface ProductsState {
   items: Array<ProductItem>;

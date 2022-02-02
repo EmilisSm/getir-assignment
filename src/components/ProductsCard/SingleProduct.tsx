@@ -1,6 +1,6 @@
-import { addItem } from '../../store/slices/ShoppingCartSlice';
+import { addItem } from '../../store/slices/shoppingCartSlice';
 import { useAppDispatch } from '../../store/hooks';
-import ProductItem from '../../api/types/ProductItem';
+import ProductItem from '../../api/types/Product';
 
 import { PriceStyled } from '../common.styled';
 import {

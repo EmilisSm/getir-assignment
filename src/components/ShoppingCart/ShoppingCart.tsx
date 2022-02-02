@@ -1,9 +1,9 @@
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import ProductItem from '../../api/types/ProductItem';
+import ProductItem from '../../api/types/Product';
 
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { removeItem, addItem } from '../../store/slices/ShoppingCartSlice';
+import { removeItem, addItem } from '../../store/slices/shoppingCartSlice';
 import {
   ShoppingCartCardStyled,
   ShoppingCartItemStyled,

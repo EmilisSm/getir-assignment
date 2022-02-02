@@ -3,7 +3,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 import { useAppDispatch } from '../../store/hooks';
-import { setSorting } from '../../store/slices/SortingSlice';
+import { setSorting } from '../../store/slices/sortingSlice';
 import { CardStyled, CardHeadingSmallStyled } from '../common.styled';
 import { FormControlWrapper } from './SortingCart.styled';
 
