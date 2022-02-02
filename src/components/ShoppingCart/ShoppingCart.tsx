@@ -29,8 +29,8 @@ export const ShoppingCart: React.FC = () => {
   return (
     <ShoppingCartCardStyled>
       {ShoppingCartItem?.length ? (
-        ShoppingCartItem.map((item, index) => (
-          <ShoppingCartItemStyled key={index}>
+        ShoppingCartItem.map((item) => (
+          <ShoppingCartItemStyled key={item.product.slug}>
             <div>
               <div>{item.product.name}</div>
               <PriceStyled>$ {item.product.price}</PriceStyled>

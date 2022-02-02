@@ -44,9 +44,7 @@ export const ProductsCard: React.FC<ProductsCardProps> = () => {
       </div>
       <ProductCardStyled>
         {items?.length > 0 ? (
-          items.map((item, index) => (
-            <SingleProduct key={index} product={item} />
-          ))
+          items.map((item) => <SingleProduct key={item.slug} product={item} />)
         ) : (
           <div>{'No products'}</div>
         )}
