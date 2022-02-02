@@ -83,3 +83,13 @@ export const ProductTypeButtonStyled = styled(ButtonStyled)`
     background-color: ${(props) => props.theme.color.primaryLight};
   }
 `;
+
+export const SpinnerStyledCard = styled(CardStyled)`
+  display: flex;
+  justify-content: center;
+  height: 964px;
+
+  & > div {
+    margin: auto;
+  }
+`;

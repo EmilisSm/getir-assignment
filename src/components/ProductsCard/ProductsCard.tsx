@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import { css } from '@emotion/react';
 
+import CircularProgress from '@mui/material/CircularProgress';
 import ProductItem from '../../api/types/ProductItem';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchProducts, setPage } from '../../store/slices/ProductsSlice';
@@ -8,6 +10,7 @@ import {
   PaginationStyled,
   ProductsHeadingStyled,
   ProductTypeButtonStyled,
+  SpinnerStyledCard,
 } from './ProductCard.styled';
 import { SingleProduct } from './SingleProduct';
 
@@ -18,7 +21,9 @@ interface ProductsCardProps {
 export const ProductsCard: React.FC<ProductsCardProps> = () => {
   const [filterType, setFilterType] = useState('');
   const dispatch = useAppDispatch();
-  const { items, page, pageCount } = useAppSelector((state) => state.products);
+  const { items, page, pageCount, status } = useAppSelector(
+    (state) => state.products
+  );
   const sortType = useAppSelector((state) => state.sort.sortType);
 
   useEffect(() => {
@@ -42,13 +47,23 @@ export const ProductsCard: React.FC<ProductsCardProps> = () => {
           {'shirt'}
         </ProductTypeButtonStyled>
       </div>
-      <ProductCardStyled>
-        {items?.length > 0 ? (
-          items.map((item) => <SingleProduct key={item.slug} product={item} />)
-        ) : (
-          <div>{'No products'}</div>
-        )}
-      </ProductCardStyled>
+      {status === 'loading' ? (
+        <SpinnerStyledCard>
+          <div>
+            <CircularProgress size={180} />
+          </div>
+        </SpinnerStyledCard>
+      ) : (
+        <ProductCardStyled>
+          {items?.length > 0 ? (
+            items.map((item) => (
+              <SingleProduct key={item.slug} product={item} />
+            ))
+          ) : (
+            <div>{'No products'}</div>
+          )}
+        </ProductCardStyled>
+      )}
       <PaginationStyled
         count={pageCount}
         color="primary"
