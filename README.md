@@ -34,27 +34,33 @@ Technologies and version used in this project.
 
 ## Scope of functionalities
 
-- Display products from json-server api with pagination
-- Ability to add products to Shopping Cart
-- Sorting product with pagination
+- Responsive design on most of screens
+- Add products to Shopping Cart.
+- Add/Remove product from Shopping Cart.
+- Display products from json-server api.
+- Product pagination.
+- Sorting products with pagination.
+- Product type filtering buttons with pagination.
 
 ## Project status
 
-I wasn't able to finish completely the project, so there are still parts that would need to be finished implementing.
+Work in progress...
 
-### Uncountered issues
+### Encountered issues
 
-- I was provided first with wrong design file which had everything exported as one vector. That took me a lot of time figuring out about design implementation for project. Which also led me to use some of MUI components for the project.
-- Getting the all of the Brands and Tags from products json.
+- I was provided first with wrong design file which had everything exported as one vector. Which led me to use some of MUI components for the project at first.
+- Figuring out how to filter and sort with pagination.
+- Filtering by Brands and Tags from products.
 - Making pagination work with sorting and filtering made things more complicated.
 
 ### TBD
 
+- make another request to get all products (without pagination) to get Brands and Tags.
+- filter by selected tags and brands with pagination, sorting and iteType filter.
+- add total shopping cart amount to redux state and display it in header
 - filtering by item Tags & Brands
-- filtering by itemType with pagination
 - add tests
 - refactor to use ReduxSaga instead of redux thunk
-- display the loading screen/indicator on the screen between each request
 - refactor MUI components to custom ones to get rid of MUI dependency and reduce bundle size
 
 ## Installation
@@ -80,4 +86,3 @@ To build the project for production:
 ```bash
 npm run build
 ```
-
