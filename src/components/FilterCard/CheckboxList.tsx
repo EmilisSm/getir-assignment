@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { CheckBoxWrapper } from './FilterCard.styled';
+import { CheckboxWrapperStyled } from './FilterCard.styled';
 
 export const CheckboxList: React.FC<{ options: Array<string> }> = ({
   options,
@@ -22,12 +22,12 @@ export const CheckboxList: React.FC<{ options: Array<string> }> = ({
   );
 
   return (
-    <CheckBoxWrapper>
+    <CheckboxWrapperStyled>
       <FormControlLabel
         label="All"
         control={<Checkbox checked={allChecked} onChange={handleAllCheck} />}
       />
       {children}
-    </CheckBoxWrapper>
+    </CheckboxWrapperStyled>
   );
 };

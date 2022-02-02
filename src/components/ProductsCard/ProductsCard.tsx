@@ -4,10 +4,10 @@ import ProductItem from '../../api/types/ProductItem';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchProducts, setPage } from '../../store/slices/ProductsSlice';
 import {
-  ProductCardWrapper,
-  PaginationWrapper,
-  ProductsHeading,
-  ProductTypeButton,
+  ProductCardStyled,
+  PaginationStyled,
+  ProductsHeadingStyled,
+  ProductTypeButtonStyled,
 } from './ProductCard.styled';
 import { SingleProduct } from './SingleProduct';
 
@@ -27,22 +27,22 @@ export const ProductsCard: React.FC<ProductsCardProps> = () => {
 
   return (
     <>
-      <ProductsHeading>{'Product'}</ProductsHeading>
+      <ProductsHeadingStyled>{'Product'}</ProductsHeadingStyled>
       <div>
-        <ProductTypeButton
+        <ProductTypeButtonStyled
           className={filterType === 'mug' ? 'focused' : ''}
           onClick={() => setFilterType('mug')}
         >
           {'mug'}
-        </ProductTypeButton>
-        <ProductTypeButton
+        </ProductTypeButtonStyled>
+        <ProductTypeButtonStyled
           className={filterType === 'shirt' ? 'focused' : ''}
           onClick={() => setFilterType('shirt')}
         >
           {'shirt'}
-        </ProductTypeButton>
+        </ProductTypeButtonStyled>
       </div>
-      <ProductCardWrapper>
+      <ProductCardStyled>
         {items?.length > 0 ? (
           items.map((item, index) => (
             <SingleProduct key={index} product={item} />
@@ -50,8 +50,8 @@ export const ProductsCard: React.FC<ProductsCardProps> = () => {
         ) : (
           <div>{'No products'}</div>
         )}
-      </ProductCardWrapper>
-      <PaginationWrapper
+      </ProductCardStyled>
+      <PaginationStyled
         count={pageCount}
         color="primary"
         shape="rounded"

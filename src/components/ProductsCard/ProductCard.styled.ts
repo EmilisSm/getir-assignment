@@ -1,18 +1,8 @@
 import styled from '@emotion/styled';
 import Pagination from '@mui/material/Pagination';
-import { CardWrapper, ButtonStyled } from '../common.styled';
+import { CardStyled, ButtonStyled } from '../common.styled';
 
-export const ProductsHeading = styled('h4')`
-  font-weight: 400;
-  font-style: normal;
-  font-size: 20px;
-  line-height: 26px;
-  letter-spacing: 0.25px;
-  margin: 16px 0;
-  color: #6f6f6f;
-`;
-
-export const ProductCardWrapper = styled(CardWrapper)`
+export const ProductCardStyled = styled(CardStyled)`
   @media screen and (min-width: 320px) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -28,7 +18,23 @@ export const ProductCardWrapper = styled(CardWrapper)`
   align-items: center;
 `;
 
-export const ProductWrapper = styled('div')`
+export const PaginationStyled = styled(Pagination)`
+  display: flex;
+  justify-content: center;
+  margin: 32px 0;
+`;
+
+export const ProductsHeadingStyled = styled('h4')`
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0.25px;
+  margin: 16px 0;
+  color: #6f6f6f;
+`;
+
+export const ProductStyled = styled('div')`
   display: inline-flex;
   flex-direction: column;
   justify-content: space-between;
@@ -37,7 +43,7 @@ export const ProductWrapper = styled('div')`
   margin: 0 auto;
 `;
 
-export const ImageWrapper = styled('img')`
+export const ImageStyled = styled('img')`
   border-radius: 12px;
   padding: 16px;
   border: 1px solid ${(props) => props.theme.color.primary};
@@ -48,7 +54,7 @@ export const ImageWrapper = styled('img')`
   height: 92px;
 `;
 
-export const ProductName = styled('div')`
+export const ProductNameStyled = styled('div')`
   font-weight: 600;
   font-size: 14px;
   font-style: normal;
@@ -58,11 +64,11 @@ export const ProductName = styled('div')`
   text-align: left;
 `;
 
-export const AddButton = styled(ButtonStyled)`
+export const AddButtonStyled = styled(ButtonStyled)`
   width: 100%;
 `;
 
-export const ProductTypeButton = styled(ButtonStyled)`
+export const ProductTypeButtonStyled = styled(ButtonStyled)`
   margin-right: 8px;
   margin-bottom: 16px;
   padding: 6px 16px;
@@ -77,10 +83,4 @@ export const ProductTypeButton = styled(ButtonStyled)`
     color: ${(props) => props.theme.color.primary};
     background-color: ${(props) => props.theme.color.primaryLight};
   }
-`;
-
-export const PaginationWrapper = styled(Pagination)`
-  display: flex;
-  justify-content: center;
-  margin: 32px 0;
 `;

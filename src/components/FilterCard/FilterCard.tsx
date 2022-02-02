@@ -1,8 +1,8 @@
 import _ from 'lodash';
 
 import { useAppSelector } from '../../store/hooks';
-import { CardHeadingSmall } from '../common.styled';
-import { SearchInput, FilterCardWrapper } from './FilterCard.styled';
+import { CardHeadingSmallStyled } from '../common.styled';
+import { SearchInputStyled, FilterCardStyled } from './FilterCard.styled';
 import { CheckboxList } from './CheckboxList';
 
 export const FilterCard: React.FC<{ title: string }> = ({ title }) => {
@@ -11,9 +11,9 @@ export const FilterCard: React.FC<{ title: string }> = ({ title }) => {
   const brands = products.map((item) => item.manufacturer);
   return (
     <>
-      <CardHeadingSmall>{title}</CardHeadingSmall>
-      <FilterCardWrapper>
-        <SearchInput
+      <CardHeadingSmallStyled>{title}</CardHeadingSmallStyled>
+      <FilterCardStyled>
+        <SearchInputStyled
           type="text"
           placeholder={`Search ${title.toLowerCase()}`}
         />
@@ -22,7 +22,7 @@ export const FilterCard: React.FC<{ title: string }> = ({ title }) => {
             title.toLowerCase() === 'tags' ? _.union(...tags) : _.union(brands)
           }
         />
-      </FilterCardWrapper>
+      </FilterCardStyled>
     </>
   );
 };

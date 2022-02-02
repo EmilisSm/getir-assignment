@@ -4,15 +4,15 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 import { useAppDispatch } from '../../store/hooks';
 import { setSorting } from '../../store/slices/SortingSlice';
-import { CardWrapper, CardHeadingSmall } from '../common.styled';
+import { CardStyled, CardHeadingSmallStyled } from '../common.styled';
 import { FormControlWrapper } from './SortingCart.styled';
 
 export const SortingCard: React.FC = () => {
   const dispatch = useAppDispatch();
   return (
     <>
-      <CardHeadingSmall>Sorting</CardHeadingSmall>
-      <CardWrapper>
+      <CardHeadingSmallStyled>Sorting</CardHeadingSmallStyled>
+      <CardStyled>
         <FormControlWrapper>
           <RadioGroup
             aria-labelledby="radio-buttons-group-label"
@@ -41,7 +41,7 @@ export const SortingCard: React.FC = () => {
             />
           </RadioGroup>
         </FormControlWrapper>
-      </CardWrapper>
+      </CardStyled>
     </>
   );
 };

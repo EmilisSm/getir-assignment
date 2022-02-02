@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { CardWrapper } from '../common.styled';
+import { CardStyled } from '../common.styled';
 
-export const CheckBoxWrapper = styled('div')`
+export const CheckboxWrapperStyled = styled('div')`
   max-height: 176px;
   overflow-x: hidden;
   overflow-y: auto;
@@ -22,11 +22,11 @@ export const CheckBoxWrapper = styled('div')`
   }
 `;
 
-export const FilterCardWrapper = styled(CardWrapper)`
+export const FilterCardStyled = styled(CardStyled)`
   height: 244px;
 `;
 
-export const SearchInput = styled('input')`
+export const SearchInputStyled = styled('input')`
   font-family: Inter;
   font-size: 14px;
   font-style: normal;

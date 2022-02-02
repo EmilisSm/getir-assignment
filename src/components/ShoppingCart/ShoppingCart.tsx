@@ -5,55 +5,60 @@ import ProductItem from '../../api/types/ProductItem';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { removeItem, addItem } from '../../store/slices/ShoppingCartSlice';
 import {
-  ShoppingCartWrapper,
-  ShoppingCartItem,
-  ItemButton,
-  ItemQuantity,
-  TotalAmount,
+  ShoppingCartCardStyled,
+  ShoppingCartItemStyled,
+  ItemButtonStyled,
+  ItemQuantityStyled,
+  TotalAmountStyled,
 } from './ShoppingCart.styled';
-import { PriceWrapper } from '../common.styled';
+import { PriceStyled } from '../common.styled';
 
 const countTotal = (
-  shoppingCartItems: Array<{ product: ProductItem; count: number }>
+  ShoppingCartItemStyleds: Array<{ product: ProductItem; count: number }>
 ) => {
-  const allPrices: Array<number> = shoppingCartItems.map(
+  const allPrices: Array<number> = ShoppingCartItemStyleds.map(
     (item) => item.product.price * item.count
   );
   return allPrices.reduce((a: number, b: number) => a + b).toFixed(2);
 };
 
 export const ShoppingCart: React.FC = () => {
-  const shoppingCartItems = useAppSelector((state) => state.shoppingCart.items);
+  const ShoppingCartItemStyleds = useAppSelector(
+    (state) => state.shoppingCart.items
+  );
   const dispatch = useAppDispatch();
 
   return (
-    <ShoppingCartWrapper>
-      {shoppingCartItems?.length ? (
-        shoppingCartItems.map((item, index) => (
-          <ShoppingCartItem key={index}>
+    <ShoppingCartCardStyled>
+      {ShoppingCartItemStyleds?.length ? (
+        ShoppingCartItemStyleds.map((item, index) => (
+          <ShoppingCartItemStyled key={index}>
             <div>
               <div>{item.product.name}</div>
-              <PriceWrapper>$ {item.product.price}</PriceWrapper>
+              <PriceStyled>$ {item.product.price}</PriceStyled>
             </div>
-            <ItemButton>
+            <ItemButtonStyled>
               <RemoveIcon
                 htmlColor="#1ea4ce"
                 onClick={() => dispatch(removeItem(item.product))}
               />
-              <ItemQuantity>{item.count}</ItemQuantity>
+              <ItemQuantityStyled>{item.count}</ItemQuantityStyled>
               <AddIcon
                 htmlColor="#1ea4ce"
                 onClick={() => dispatch(addItem(item.product))}
               />
-            </ItemButton>
-          </ShoppingCartItem>
+            </ItemButtonStyled>
+          </ShoppingCartItemStyled>
         ))
       ) : (
-        <ShoppingCartItem>{'no products selected'}</ShoppingCartItem>
+        <ShoppingCartItemStyled>
+          {'no products selected'}
+        </ShoppingCartItemStyled>
       )}
-      <TotalAmount>
-        &#x20BA; {shoppingCartItems?.length && countTotal(shoppingCartItems)}
-      </TotalAmount>
-    </ShoppingCartWrapper>
+      <TotalAmountStyled>
+        &#x20BA;{' '}
+        {ShoppingCartItemStyleds?.length && countTotal(ShoppingCartItemStyleds)}
+      </TotalAmountStyled>
+    </ShoppingCartCardStyled>
   );
 };

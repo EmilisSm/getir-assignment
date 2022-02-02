@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 
-export const CardWrapper = styled('div')`
+export const CardStyled = styled('div')`
   background-color: #ffffff;
   padding: 24px;
   box-shadow: 0px 6px 24px rgba(93, 62, 188, 0.04);
   border-radius: 2px;
 `;
 
-export const PriceWrapper = styled('div')`
+export const PriceStyled = styled('div')`
   color: ${(props) => props.theme.color.primary};
 `;
 
@@ -32,7 +32,7 @@ export const ButtonStyled = styled('button')`
   }
 `;
 
-export const CardHeadingSmall = styled('h3')`
+export const CardHeadingSmallStyled = styled('h3')`
   color: #697488;
   font-size: 13px;
   font-style: normal;

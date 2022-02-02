@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
-import { CardWrapper, PriceWrapper } from '../common.styled';
+import { CardStyled, PriceStyled } from '../common.styled';
 
-export const ShoppingCartWrapper = styled(CardWrapper)`
+export const ShoppingCartCardStyled = styled(CardStyled)`
   margin-top: 15px;
   border: 6px solid ${(props) => props.theme.color.primary};
   border-radius: 2px;
 `;
 
-export const ShoppingCartItem = styled('div')`
+export const ShoppingCartItemStyled = styled('div')`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -17,7 +17,7 @@ export const ShoppingCartItem = styled('div')`
   gap: 15px;
 `;
 
-export const ItemButton = styled('div')`
+export const ItemButtonStyled = styled('div')`
   display: flex;
 
   svg:hover {
@@ -25,12 +25,12 @@ export const ItemButton = styled('div')`
   }
 `;
 
-export const ItemQuantity = styled('div')`
+export const ItemQuantityStyled = styled('div')`
   background-color: ${(props) => props.theme.color.primary};
   padding: 2px 8px;
 `;
 
-export const TotalAmount = styled(PriceWrapper)`
+export const TotalAmountStyled = styled(PriceStyled)`
   text-align: end;
   padding: 17px 24px;
   border: 2px solid #1ea4ce;
