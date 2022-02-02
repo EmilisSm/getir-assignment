@@ -21,6 +21,7 @@ export const ButtonStyled = styled('button')`
   font-weight: 600;
   line-height: 20px;
   letter-spacing: 0px;
+  transition: opacity 100ms;
 
   &:hover {
     cursor: pointer;
