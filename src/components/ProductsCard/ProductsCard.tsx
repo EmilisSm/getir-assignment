@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { css } from '@emotion/react';
 
 import CircularProgress from '@mui/material/CircularProgress';
 import ProductItem from '../../api/types/ProductItem';
