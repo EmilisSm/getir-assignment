@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import _ from 'lodash';
 
 import { CheckboxWrapperStyled, CheckboxStyled } from './CheckboxList.styled';
@@ -26,7 +26,23 @@ export const CheckboxList: React.FC<{ options: Array<string> }> = ({
   const [allChecked, setAllChecked] = useState(true);
   const [selected, setSelected] = useState<Array<string>>([]);
 
+  useEffect(() => {
+    if (!selected.length) {
+      setAllChecked(false);
+    }
+    if (options.length === selected.length) {
+      setAllChecked(true);
+    } else {
+      setAllChecked(false);
+    }
+  }, [options.length, selected]);
+
   const handleAllCheck = () => {
+    if (!allChecked) {
+      setSelected(options);
+    } else {
+      setSelected([]);
+    }
     setAllChecked(!allChecked);
   };
 
