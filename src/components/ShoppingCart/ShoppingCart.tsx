@@ -54,8 +54,7 @@ export const ShoppingCart: React.FC = () => {
         </ShoppingCartItemStyled>
       )}
       <TotalAmountStyled>
-        &#x20BA;{' '}
-        {ShoppingCartItemStyled?.length && countTotal(ShoppingCartItem)}
+        &#x20BA; {ShoppingCartItem?.length && countTotal(ShoppingCartItem)}
       </TotalAmountStyled>
     </ShoppingCartCardStyled>
   );
