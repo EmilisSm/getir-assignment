@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import isEqual from 'lodash/isEqual';
+import { isEqual } from 'lodash/';
 import ProductItem from '../../api/types/ProductItem';
 
 interface ShoppingCartState {

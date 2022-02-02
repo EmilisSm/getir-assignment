@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import _ from 'lodash';
+import { camelCase } from 'lodash';
 
 import { CheckboxWrapperStyled, CheckboxStyled } from './CheckboxList.styled';
 
@@ -11,12 +11,12 @@ const Checkbox: React.FC<{
   <CheckboxStyled>
     <input
       type="checkbox"
-      id={_.camelCase(name)}
-      name={_.camelCase(name)}
+      id={camelCase(name)}
+      name={camelCase(name)}
       checked={checked}
       onChange={onChange}
     />
-    <label htmlFor={_.camelCase(name)}>{name}</label>
+    <label htmlFor={camelCase(name)}>{name}</label>
   </CheckboxStyled>
 );
 
@@ -62,7 +62,7 @@ export const CheckboxList: React.FC<{ options: Array<string> }> = ({
       <Checkbox name="All" checked={allChecked} onChange={handleAllCheck} />
       {options.map((option) => (
         <Checkbox
-          key={_.camelCase(option)}
+          key={camelCase(option)}
           name={option}
           checked={selected.includes(option)}
           onChange={() => handleCheckboxCheck(option)}

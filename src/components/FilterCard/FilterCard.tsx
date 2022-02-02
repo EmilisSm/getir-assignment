@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { union } from 'lodash';
 
 import { useAppSelector } from '../../store/hooks';
 import { CardHeadingSmallStyled } from '../common.styled';
@@ -19,7 +19,7 @@ export const FilterCard: React.FC<{ title: string }> = ({ title }) => {
         />
         <CheckboxList
           options={
-            title.toLowerCase() === 'tags' ? _.union(...tags) : _.union(brands)
+            title.toLowerCase() === 'tags' ? union(...tags) : union(brands)
           }
         />
       </FilterCardStyled>
