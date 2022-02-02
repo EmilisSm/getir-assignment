@@ -38,7 +38,7 @@ export const fetchProducts = createAsyncThunk(
           url = url + '_sort=price&_order=desc&';
           break;
         case 'DateAsc':
-          url = url = '_sort=added&_order=asc&';
+          url = url + '_sort=added&_order=asc&';
           break;
         case 'DateDesc':
           url = url + '_sort=added&_order=desc&';
