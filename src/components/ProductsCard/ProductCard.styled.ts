@@ -46,9 +46,8 @@ export const ProductStyled = styled('div')`
 export const ImageStyled = styled('img')`
   border-radius: 12px;
   padding: 16px;
-  border: 1px solid ${(props) => props.theme.color.primary};
+  border: 1px solid #f3f0fe;
   display: inline-block;
-  background-color: lightblue;
   margin-bottom: 8px;
   width: 92px;
   height: 92px;
