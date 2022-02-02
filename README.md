@@ -12,7 +12,7 @@ Application assignment project for Getir
 
 ## Introduction
 
-The aim of this project was to create a product listing web app. Where user could browse through different variety of products, filter and sort them, and add them to the shopping cart.
+The aim of this project is to create a product listing web app.
 
 ## Technologies
 
