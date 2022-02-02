@@ -4,12 +4,12 @@ import { ProductsCard } from './ProductsCard/ProductsCard';
 import { ShoppingCart } from './ShoppingCart/ShoppingCart';
 import { Header } from './layout/Header/Header';
 import { Footer } from './layout/Footer/Footer';
-import { AppMain } from './layout/AppMain/AppMain';
+import { Main } from './layout/Main/Main';
 
 export {
   Header,
   Footer,
-  AppMain,
+  Main,
   SortingCard,
   FilterCard,
   ProductsCard,

@@ -3,7 +3,7 @@ import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import { theme, muiTheme } from './theme';
-import { Header, Footer, AppMain } from './components';
+import { Header, Footer, Main } from './components';
 
 import './styles.css';
 
@@ -13,7 +13,7 @@ export const App = () => {
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <Header />
-          <AppMain />
+          <Main />
           <Footer />
         </Provider>
       </ThemeProvider>
