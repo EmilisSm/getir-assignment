@@ -14,24 +14,22 @@ import {
 import { PriceStyled } from '../common.styled';
 
 const countTotal = (
-  ShoppingCartItemStyleds: Array<{ product: ProductItem; count: number }>
+  ShoppingCartItem: Array<{ product: ProductItem; count: number }>
 ) => {
-  const allPrices: Array<number> = ShoppingCartItemStyleds.map(
+  const allPrices: Array<number> = ShoppingCartItem.map(
     (item) => item.product.price * item.count
   );
   return allPrices.reduce((a: number, b: number) => a + b).toFixed(2);
 };
 
 export const ShoppingCart: React.FC = () => {
-  const ShoppingCartItemStyleds = useAppSelector(
-    (state) => state.shoppingCart.items
-  );
+  const ShoppingCartItem = useAppSelector((state) => state.shoppingCart.items);
   const dispatch = useAppDispatch();
 
   return (
     <ShoppingCartCardStyled>
-      {ShoppingCartItemStyleds?.length ? (
-        ShoppingCartItemStyleds.map((item, index) => (
+      {ShoppingCartItem?.length ? (
+        ShoppingCartItem.map((item, index) => (
           <ShoppingCartItemStyled key={index}>
             <div>
               <div>{item.product.name}</div>
@@ -57,7 +55,7 @@ export const ShoppingCart: React.FC = () => {
       )}
       <TotalAmountStyled>
         &#x20BA;{' '}
-        {ShoppingCartItemStyleds?.length && countTotal(ShoppingCartItemStyleds)}
+        {ShoppingCartItemStyled?.length && countTotal(ShoppingCartItem)}
       </TotalAmountStyled>
     </ShoppingCartCardStyled>
   );
