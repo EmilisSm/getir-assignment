@@ -7,8 +7,8 @@ import { CheckboxList } from './CheckboxList';
 
 export const FilterCard: React.FC<{ title: string }> = ({ title }) => {
   const products = useAppSelector((state) => state.products.items);
-  const tags = products.map((item) => item.tags);
-  const brands = products.map((item) => item.manufacturer);
+  const tags = products?.map((item) => item.tags);
+  const brands = products?.map((item) => item.manufacturer);
   return (
     <>
       <CardHeadingSmallStyled>{title}</CardHeadingSmallStyled>

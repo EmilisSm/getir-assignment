@@ -1,4 +1,4 @@
-import { SortingCard, FilterCard, ProductsCard, ShoppingCart } from '..';
+import { SortingCard, FilterCard, ProductsCard, ShoppingCart } from '../../';
 
 import { AppMainWrapper } from './AppMain.styled';
 

@@ -73,7 +73,7 @@ const productsSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.items = action.payload.data;
+        state.items = [...action.payload.data];
         state.pageCount = Math.ceil(Number(action.payload.total) / 16);
       })
       .addCase(fetchProducts.rejected, (state, action) => {

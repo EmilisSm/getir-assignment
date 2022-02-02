@@ -1,5 +1,5 @@
 import { HeaderStyled } from './Header.styled';
-import Logo from '../../assets/Logo.png';
+import Logo from '../../../assets/Logo.png';
 
 export const Header: React.FC = () => (
   <HeaderStyled>
