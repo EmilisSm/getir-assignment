@@ -81,10 +81,3 @@ To build the project for production:
 npm run build
 ```
 
-### Testing
-
-To run tests:
-
-```bash
-npm test
-```
