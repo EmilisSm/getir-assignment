@@ -1,4 +1,4 @@
-# getir-assignment
+# Market-app
 
 Application assignment project for Getir
 
