@@ -27,31 +27,8 @@ interface fetchProductArguments {
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
   async (args: fetchProductArguments) => {
-    let url = 'items?';
-    const { page, sortValue, filterType } = args;
-    if (sortValue) {
-      switch (sortValue) {
-        case 'PriceAsc':
-          url = url + '_sort=price&_order=asc&';
-          break;
-        case 'PriceDesc':
-          url = url + '_sort=price&_order=desc&';
-          break;
-        case 'DateAsc':
-          url = url + '_sort=added&_order=asc&';
-          break;
-        case 'DateDesc':
-          url = url + '_sort=added&_order=desc&';
-          break;
-        default:
-          break;
-      }
-    }
-    if (filterType) {
-      url = url + `itemType=${filterType}&`;
-    }
     // we need to resolve response promise before returing the action payload
-    const response = await ItemsService.fetchProductItems(url, page);
+    const response = await ItemsService.fetchProductItems(args);
     const data = await response.response;
     const total = response.total;
     return { data, total };

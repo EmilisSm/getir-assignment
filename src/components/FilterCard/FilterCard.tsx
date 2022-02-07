@@ -1,14 +1,12 @@
-import { union } from 'lodash';
-
 import { useAppSelector } from '../../store/hooks';
 import { CardHeadingSmallStyled } from '../common.styled';
 import { SearchInputStyled, FilterCardStyled } from './FilterCard.styled';
 import { CheckboxList } from './CheckboxList';
 
 export const FilterCard: React.FC<{ title: string }> = ({ title }) => {
-  const products = useAppSelector((state) => state.products.items);
-  const tags = products?.map((item) => item.tags);
-  const brands = products?.map((item) => item.manufacturer);
+  const filter = useAppSelector((state) => state.filter);
+  const tags = filter.tags;
+  const brands = filter.brands;
   return (
     <>
       <CardHeadingSmallStyled>{title}</CardHeadingSmallStyled>
@@ -18,9 +16,7 @@ export const FilterCard: React.FC<{ title: string }> = ({ title }) => {
           placeholder={`Search ${title.toLowerCase()}`}
         />
         <CheckboxList
-          options={
-            title.toLowerCase() === 'tags' ? union(...tags) : union(brands)
-          }
+          options={title.toLowerCase() === 'tags' ? tags : brands}
         />
       </FilterCardStyled>
     </>
