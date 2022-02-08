@@ -33,6 +33,7 @@ export const ButtonStyled = styled('button')`
 `;
 
 export const CardHeadingSmallStyled = styled('h3')`
+  text-transform: capitalize;
   color: #697488;
   font-size: 13px;
   font-style: normal;
