@@ -41,6 +41,7 @@ Technologies and version used in this project.
 - Product pagination.
 - Sorting products with pagination.
 - Product type filtering buttons with pagination.
+- Product filtering by tags and brands.
 
 ## Project status
 
@@ -49,16 +50,12 @@ Work in progress...
 ### Encountered issues
 
 - I was provided first with wrong design file which had everything exported as one vector. Which led me to use some of MUI components for the project at first.
-- Figuring out how to filter and sort with pagination.
-- Filtering by Brands and Tags from products.
-- Making pagination work with sorting and filtering made things more complicated.
+- resizing card when there is less products than 16.
 
 ### TBD
 
-- make another request to get all products (without pagination) to get Brands and Tags.
-- filter by selected tags and brands with pagination, sorting and iteType filter.
+- search inputs
 - add total shopping cart amount to redux state and display it in header.
-- filtering by item Tags & Brands.
 - add webpack alias to clean up imports.
 - add tests.
 - refactor to use ReduxSaga instead of redux thunk.
