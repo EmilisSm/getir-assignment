@@ -7,6 +7,10 @@ import Product from '../../api/types/Product';
 interface ProductsState {
   tags: Array<string>;
   brands: Array<string>;
+  selected: {
+    brands: Array<string>;
+    tags: Array<string>;
+  };
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error?: string | null;
 }
@@ -14,6 +18,10 @@ interface ProductsState {
 const initialState: ProductsState = {
   tags: [],
   brands: [],
+  selected: {
+    brands: [],
+    tags: [],
+  },
   status: 'idle',
   error: null,
 };
@@ -26,14 +34,21 @@ export const fetchCompanyBrands = createAsyncThunk(
 );
 
 export const fetchAllProductTags = createAsyncThunk(
-  'products/fetchAllProducts',
+  'filter/fetchAllProducts',
   async () => await ItemsService.fetchAllProducts()
 );
 
 const filterSlice = createSlice({
   name: 'filter',
   initialState,
-  reducers: {},
+  reducers: {
+    setTags: (state, action: PayloadAction<Array<string>>) => {
+      state.selected.tags = action.payload;
+    },
+    setBrands: (state, action: PayloadAction<Array<string>>) => {
+      state.selected.brands = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchCompanyBrands.pending, (state) => {
@@ -62,6 +77,6 @@ const filterSlice = createSlice({
   },
 });
 
-// export const { fetchCompanyBrands } = filterSlice.actions;
+export const { setTags, setBrands } = filterSlice.actions;
 
 export default filterSlice.reducer;

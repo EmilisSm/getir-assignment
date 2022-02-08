@@ -1,3 +1,5 @@
+import { tagsBrandsReducer, sortAscDscSwitch } from '../utils';
+
 const client = {
   get: (urlRequest: string) => {
     let total;
@@ -20,35 +22,32 @@ const client = {
 interface fetchProductArguments {
   page: number;
   sortValue?: string;
-  filterType?: string;
+  filterType: 'mug' | 'shirt' | '';
+  tags: Array<string> | [];
+  brands: Array<string> | [];
 }
 
-// with pagination
+/**
+ *
+ * @param args arguments for fetching product items
+ * @returns sorted, filtered by itemType, tags & brands products with pagination
+ */
 const fetchProductItems = async (args: fetchProductArguments) => {
-  const { page, sortValue, filterType } = args;
+  const { page, sortValue, filterType, tags, brands } = args;
   let url = 'items?';
   if (sortValue) {
-    switch (sortValue) {
-      case 'PriceAsc':
-        url = url + '_sort=price&_order=asc&';
-        break;
-      case 'PriceDesc':
-        url = url + '_sort=price&_order=desc&';
-        break;
-      case 'DateAsc':
-        url = url + '_sort=added&_order=asc&';
-        break;
-      case 'DateDesc':
-        url = url + '_sort=added&_order=desc&';
-        break;
-      default:
-        break;
-    }
+    url = sortAscDscSwitch(url, sortValue);
   }
   if (filterType) {
     url = url + `itemType=${filterType}&`;
   }
-  return client.get(url + `_page=${page}&_limit=16`);
+  if (tags.length > 0) {
+    url = url + `tags=${tagsBrandsReducer(tags, 'tags')}&`;
+  }
+  if (brands.length > 0) {
+    url = url + `manufacturer=${tagsBrandsReducer(brands, 'manufacturer')}&`;
+  }
+  return await client.get(url + `_page=${page}&_limit=16`);
 };
 
 const fetchCompanies = async () => (await client.get('companies?')).response;

@@ -18,16 +18,17 @@ interface ProductsCardProps {
 }
 
 export const ProductsCard: React.FC<ProductsCardProps> = () => {
-  const [filterType, setFilterType] = useState('');
+  const [filterType, setFilterType] = useState<'mug' | 'shirt' | ''>('');
   const dispatch = useAppDispatch();
+  const { tags, brands } = useAppSelector((state) => state.filter.selected);
   const { items, page, pageCount, status } = useAppSelector(
     (state) => state.products
   );
   const sortType = useAppSelector((state) => state.sort.sortType);
 
   useEffect(() => {
-    dispatch(fetchProducts({ page, sortValue: sortType, filterType }));
-  }, [dispatch, page, sortType, filterType]);
+    dispatch(fetchProducts(filterType));
+  }, [dispatch, page, sortType, filterType, tags, brands]);
 
   return (
     <>

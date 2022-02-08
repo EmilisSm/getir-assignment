@@ -3,7 +3,9 @@ import { CardHeadingSmallStyled } from '../common.styled';
 import { SearchInputStyled, FilterCardStyled } from './FilterCard.styled';
 import { CheckboxList } from './CheckboxList';
 
-export const FilterCard: React.FC<{ title: string }> = ({ title }) => {
+export const FilterCard: React.FC<{ title: 'tags' | 'brands' }> = ({
+  title,
+}) => {
   const filter = useAppSelector((state) => state.filter);
   const tags = filter.tags;
   const brands = filter.brands;
@@ -16,6 +18,7 @@ export const FilterCard: React.FC<{ title: string }> = ({ title }) => {
           placeholder={`Search ${title.toLowerCase()}`}
         />
         <CheckboxList
+          title={title}
           options={title.toLowerCase() === 'tags' ? tags : brands}
         />
       </FilterCardStyled>

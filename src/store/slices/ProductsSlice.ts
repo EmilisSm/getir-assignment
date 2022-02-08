@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import ItemsService from '../../api/service';
 import ProductItem from '../../api/types/Product';
+import { RootState } from '../store';
 
 interface ProductsState {
   items: Array<ProductItem>;
@@ -18,17 +19,22 @@ const initialState: ProductsState = {
   pageCount: 0,
 };
 
-interface fetchProductArguments {
-  page: number;
-  sortValue?: string;
-  filterType?: string;
-}
-
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
-  async (args: fetchProductArguments) => {
+  async (filterType: 'mug' | 'shirt' | '', { getState }) => {
+    const { filter, sort, products } = getState() as RootState;
+    const page = products.page;
+    const sortValue = sort.sortType;
+    const tags = filter.selected.tags;
+    const brands = filter.selected.brands;
     // we need to resolve response promise before returing the action payload
-    const response = await ItemsService.fetchProductItems(args);
+    const response = await ItemsService.fetchProductItems({
+      page,
+      sortValue,
+      filterType,
+      tags,
+      brands,
+    });
     const data = await response.response;
     const total = response.total;
     return { data, total };

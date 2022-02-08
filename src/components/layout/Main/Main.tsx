@@ -24,8 +24,8 @@ export const Main: React.FC = () => {
       <MainWrapperStyled>
         <FirstColumnStyled>
           <SortingCard />
-          <FilterCard title="Brands" />
-          <FilterCard title="Tags" />
+          <FilterCard title="brands" />
+          <FilterCard title="tags" />
         </FirstColumnStyled>
         <SecondColumnStyled>
           <ProductsCard />

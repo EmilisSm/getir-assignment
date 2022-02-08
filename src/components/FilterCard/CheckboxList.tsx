@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import { camelCase } from 'lodash';
 
+import { useAppDispatch } from '../../store/hooks';
+import { setTags, setBrands } from '../../store/slices/filterSlice';
 import { CheckboxWrapperStyled, CheckboxStyled } from './CheckboxList.styled';
+
+const setFilterByTitle = (title: 'tags' | 'brands', options: Array<string>) =>
+  title === 'tags' ? setTags(options) : setBrands(options);
 
 const Checkbox: React.FC<{
   name: string;
@@ -20,11 +25,13 @@ const Checkbox: React.FC<{
   </CheckboxStyled>
 );
 
-export const CheckboxList: React.FC<{ options: Array<string> }> = ({
-  options,
-}) => {
+export const CheckboxList: React.FC<{
+  title: 'tags' | 'brands';
+  options: Array<string>;
+}> = ({ title, options }) => {
   const [allChecked, setAllChecked] = useState(true);
   const [selected, setSelected] = useState<Array<string>>([]);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (!selected.length) {
@@ -40,8 +47,10 @@ export const CheckboxList: React.FC<{ options: Array<string> }> = ({
   const handleAllCheck = () => {
     if (!allChecked) {
       setSelected(options);
+      dispatch(setFilterByTitle(title, []));
     } else {
       setSelected([]);
+      dispatch(setFilterByTitle(title, []));
     }
     setAllChecked(!allChecked);
   };
@@ -51,9 +60,16 @@ export const CheckboxList: React.FC<{ options: Array<string> }> = ({
     const isSelected = selected.includes(option);
     if (isSelected) {
       setSelected(tempArray.filter((i) => i !== option));
+      dispatch(
+        setFilterByTitle(
+          title,
+          tempArray.filter((i) => i !== option)
+        )
+      );
     } else {
       tempArray.push(option);
       setSelected(tempArray);
+      dispatch(setFilterByTitle(title, tempArray));
     }
   };
 
