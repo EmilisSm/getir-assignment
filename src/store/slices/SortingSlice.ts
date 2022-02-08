@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface SortState {
-  sortType: string | undefined;
+  sortType?: string;
 }
 
 const initialState: SortState = {

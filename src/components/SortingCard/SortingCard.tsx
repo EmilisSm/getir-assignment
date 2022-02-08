@@ -1,45 +1,60 @@
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-
-import { useAppDispatch } from '../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setSorting } from '../../store/slices/sortingSlice';
 import { CardStyled, CardHeadingSmallStyled } from '../common.styled';
 import { FormControlWrapper } from './SortingCart.styled';
 
 export const SortingCard: React.FC = () => {
   const dispatch = useAppDispatch();
+  const sortType = useAppSelector((state) => state.sort.sortType);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setSorting(event.target.value));
+  };
   return (
     <>
       <CardHeadingSmallStyled>Sorting</CardHeadingSmallStyled>
       <CardStyled>
         <FormControlWrapper>
-          <RadioGroup
-            aria-labelledby="radio-buttons-group-label"
-            name="radio-buttons-group"
-            onChange={(e) => dispatch(setSorting(e.target.value))}
-          >
-            <FormControlLabel
+          <div>
+            <input
+              type="radio"
+              id="priceAsc"
               value="PriceAsc"
-              control={<Radio />}
-              label="Price low to high"
+              checked={sortType === 'PriceAsc'}
+              onChange={handleChange}
             />
-            <FormControlLabel
+            <label htmlFor="priceAsc">Price low to high</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="priceDesc"
               value="PriceDesc"
-              control={<Radio />}
-              label="Price high to low"
+              checked={sortType === 'PriceDesc'}
+              onChange={handleChange}
             />
-            <FormControlLabel
+            <label htmlFor="priceDesc">Price high to low</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="dateAsc"
               value="DateAsc"
-              control={<Radio />}
-              label="New to old"
+              checked={sortType === 'DateAsc'}
+              onChange={handleChange}
             />
-            <FormControlLabel
+            <label htmlFor="dateAsc">New to old</label>
+          </div>
+          <div>
+            <input
+              type="radio"
+              id="dateDesc"
               value="DateDesc"
-              control={<Radio />}
-              label="Old to new"
+              checked={sortType === 'DateDesc'}
+              onChange={handleChange}
             />
-          </RadioGroup>
+            <label htmlFor="dateDesc">Old to new</label>
+          </div>
         </FormControlWrapper>
       </CardStyled>
     </>
