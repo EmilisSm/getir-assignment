@@ -54,7 +54,6 @@ Work in progress...
 
 ### TBD
 
-- search inputs
 - add total shopping cart amount to redux state and display it in header.
 - add webpack alias to clean up imports.
 - add tests.
