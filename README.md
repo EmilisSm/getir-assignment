@@ -47,17 +47,11 @@ Technologies and version used in this project.
 
 Work in progress...
 
-### Encountered issues
-
-- I was provided first with wrong design file which had everything exported as one vector. Which led me to use some of MUI components for the project at first.
-- resizing card when there is less products than 16.
-
 ### TBD
 
 - add total shopping cart amount to redux state and display it in header.
 - add webpack alias to clean up imports.
 - add tests.
-- refactor to use ReduxSaga instead of redux thunk.
 - refactor MUI components to custom ones to get rid of MUI dependency and reduce bundle size.
 
 ## Installation
