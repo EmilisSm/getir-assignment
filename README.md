@@ -1,6 +1,6 @@
 # Market-app
 
-Application assignment project for Getir
+Product market app
 
 ## Table of contents
 
@@ -12,7 +12,7 @@ Application assignment project for Getir
 
 ## Introduction
 
-The aim of this project is to create a product listing web app.
+The aim of this project is to create a product listing web app & show proficiency in front-end development.
 
 ## Technologies
 
